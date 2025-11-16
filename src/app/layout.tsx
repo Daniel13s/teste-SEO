@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "JC Piscinas | A sua construtora em Cajazeiras",
-  description: "Procurando uma construtora? Pense em seu futuro com a melhor qualidade.",
+  description: "Procurando uma construtora? Pense em seu futuro com a melhor qualidade, venha para a melhor construtora de Cajazeiras.",
 };
 
 export default function RootLayout({
@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body>{children}</body>
     </html>
   );
