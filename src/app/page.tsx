@@ -1,7 +1,13 @@
 "use client";
 import Image from "next/image";
+import { useState } from "react";
+import { BsArrowDown } from "react-icons/bs";
+import { IoMdArrowDropdown } from "react-icons/io";
 
 export default function Home() {
+  const [isOpen1, setIsOpen1] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
+  const [isOpen3, setIsOpen3] = useState(false);
   return (
     <>
       <header className="flex justify-between p-5 border-b-black border-b-1">
@@ -43,25 +49,54 @@ export default function Home() {
         id="inicio"
         className="flex flex-col justify-center items-center h-screen border-b-1 border-b-black"
       >
-        <h1 className="text-3xl font-bold">
+        <div className="video-bg">
+          <video autoPlay loop muted playsInline preload="auto">
+            <source src="/videos/bc.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h1 className="text-3xl font-bold text-white">
           A melhor construtora em Cajazeiras
         </h1>
-        <h2 className="text-xl">
+        <h2 className="text-xl text-white">
           Planeje o seu futuro investimento com a melhor construtora em
           Cajazeiras, realizando sonhos
         </h2>
       </section>
       <section id="marketing" className="flex flex-col gap-4 h-screen justify-center items-center border-b-1 border-b-black p-5">
-        <h2 className="text-xl font-medium">
+        <h2 className="text-2xl font-medium">
           O seu futuro investimento está em boas mãos!
         </h2>
-        <h2 className="text-xl font-medium">
-          Por que escolher a JC Piscinas em Cajazeiras?
-        </h2>
-        <p>
-          A construtora em Cajazeiras JC Piscinas, atua no mercado a mais de 4
-          anos, realizando sonhos e melhorando seu futuro.
-        </p>
+        <div className="flex flex-col gap-4 w-[70vw] bg-gray-400 p-4 rounded-2xl">
+          <h3 className="text-xl font-medium flex items-center justify-between" onClick={() => setIsOpen1(!isOpen1)}>
+            Por que escolher a JC Piscinas em Cajazeiras?
+            <IoMdArrowDropdown />
+          </h3>
+          {isOpen1 && (
+            <p>
+            A construtora em Cajazeiras JC Piscinas, atua no mercado a mais de 4
+            anos, realizando sonhos e melhorando seu futuro.
+          </p>)}
+        </div>
+        <div className="flex flex-col gap-4 w-[70vw] bg-gray-400 p-4 rounded-2xl">
+          <h3 className="text-xl font-medium flex items-center justify-between" onClick={() => setIsOpen2(!isOpen2)}>
+            Quanto tempo leva para construir uma piscina?
+            <IoMdArrowDropdown />
+          </h3>
+          {isOpen2 && (
+            <p>
+            O tempo de construção de uma piscina pode variar dependendo do tamanho, mas geralmente leva entre 1 a 2 meses.
+          </p>)}
+        </div>
+        <div className="flex flex-col gap-4 w-[70vw] bg-gray-400 p-4 rounded-2xl">
+          <h3 className="text-xl font-medium flex items-center justify-between" onClick={() => setIsOpen3(!isOpen3)}>
+            Vocês fazem manutenção e limpeza periódica?
+            <IoMdArrowDropdown />
+          </h3>
+          {isOpen3 && (
+            <p>
+            Sim, oferecemos serviços de manutenção e limpeza periódica para garantir que sua piscina esteja sempre em ótimas condições.
+          </p>)}
+        </div>
       </section>
       <section id="construcoes" className="flex flex-col gap-4 h-screen justify-around items-center">
         <h2 className="text-2xl font-medium">Construções</h2>
