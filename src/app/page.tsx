@@ -55,7 +55,7 @@ export default function Home() {
           </video>
         </div>
         <h1 className="text-3xl font-bold text-white">
-          A melhor construtora em Cajazeiras
+          A sua construtora em Cajazeiras
         </h1>
         <h2 className="text-xl text-white">
           Planeje o seu futuro investimento com a melhor construtora em
