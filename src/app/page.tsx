@@ -1,13 +1,32 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { BsArrowDown } from "react-icons/bs";
+import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
 import { IoMdArrowDropdown } from "react-icons/io";
 
 export default function Home() {
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
+
+  const [carrossel, setCarrossel] = useState(0);
+
+  function handleCarrossel(direction: string) {
+    if(direction === 'right') {
+      if(carrossel >= 3) {
+        setCarrossel(0);
+        return;
+      }
+      setCarrossel((prev) => prev + 1);
+    }
+    else if(direction === 'left') {
+      if(carrossel <= 0) {
+        setCarrossel(3);
+        return;
+      }
+      setCarrossel((prev) => prev - 1);
+    }
+  }
   return (
     <>
       <header className="flex justify-between p-5 border-b-black border-b-1">
@@ -100,10 +119,14 @@ export default function Home() {
       </section>
       <section id="construcoes" className="flex flex-col gap-4 h-screen justify-around items-center">
         <h2 className="text-2xl font-medium">Construções</h2>
-        <div className="grid grid-cols-3 place-items-center">
-          <Image src="" alt="Construtora em cajazeiras | Cosntrução 1" />
-          <Image src="" alt="Construtora em cajazeiras | Construção 2" />
-          <Image src="" alt="Construtora em cajazeiras | Construção 3" />
+        <div className="grid w-[80vw] h-[100vh] grid-cols-3 place-items-center">
+          <button onClick={() => {
+            handleCarrossel('left')
+          }}><BsArrowLeftCircleFill size={50} /></button>
+          {carrossel === 0 ? <Image src="/1.webp" alt="construção 1" width={500} height={300} /> : carrossel === 1 ? <Image src="/2.webp" alt="construção 2" width={500} height={300} /> : carrossel === 2 ? <Image src="/3.webp" alt="construção 3" width={500} height={300} /> : <Image src="/4.webp" alt="construção 4" width={500} height={300} />}
+          <button onClick={() => {
+            handleCarrossel('right')
+          }}><BsArrowRightCircleFill size={50} /></button>
         </div>
       </section>
     </>
