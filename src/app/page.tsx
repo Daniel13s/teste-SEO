@@ -1,4 +1,5 @@
 "use client";
+import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
@@ -29,6 +30,40 @@ export default function Home() {
   }
   return (
     <>
+    <Head>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Quanto tempo leva para construir uma piscina?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O tempo de construção de uma piscina pode variar dependendo do tamanho, mas geralmente leva entre 1 a 2 meses."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Por que escolher a JC Piscinas em Cajazeiras?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A construtora em Cajazeiras JC Piscinas, atua no mercado a mais de 4 anos, realizando sonhos e melhorando seu futuro."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Vocês fazem manutenção e limpeza periódica?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sim, oferecemos serviços de manutenção e limpeza periódica para garantir que sua piscina esteja sempre em ótimas condições."
+            }
+          }
+        ]
+        })
+      }}></script>
+    </Head>
       <header className="flex justify-between p-5 border-b-black border-b-1">
         <div>logo</div>
         <section className="flex gap-2">
