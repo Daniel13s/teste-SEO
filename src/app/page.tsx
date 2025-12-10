@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
-import { IoMdArrowDropdown } from "react-icons/io";
+import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 
 export default function Home() {
   const [isOpen1, setIsOpen1] = useState(false);
@@ -65,7 +65,7 @@ export default function Home() {
       }}></script>
     </Head>
       <header className="flex justify-between p-5 border-b-black border-b-1">
-        <div>logo</div>
+        <Image className="rounded-4xl" src="/logo.webp" width={50} height={50} alt="logo-JC Piscinas" />
         <section className="flex gap-2">
           <button
             onClick={() => {
@@ -123,7 +123,7 @@ export default function Home() {
         <div className="flex flex-col gap-4 w-[70vw] bg-gray-400 p-4 rounded-2xl">
           <h3 className="text-xl font-medium flex items-center justify-between" onClick={() => setIsOpen1(!isOpen1)}>
             Por que escolher a JC Piscinas em Cajazeiras?
-            <IoMdArrowDropdown />
+            {isOpen1 ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}
           </h3>
           {isOpen1 && (
             <p>
@@ -134,7 +134,7 @@ export default function Home() {
         <div className="flex flex-col gap-4 w-[70vw] bg-gray-400 p-4 rounded-2xl">
           <h3 className="text-xl font-medium flex items-center justify-between" onClick={() => setIsOpen2(!isOpen2)}>
             Quanto tempo leva para construir uma piscina?
-            <IoMdArrowDropdown />
+            {isOpen2 ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}
           </h3>
           {isOpen2 && (
             <p>
@@ -144,7 +144,7 @@ export default function Home() {
         <div className="flex flex-col gap-4 w-[70vw] bg-gray-400 p-4 rounded-2xl">
           <h3 className="text-xl font-medium flex items-center justify-between" onClick={() => setIsOpen3(!isOpen3)}>
             Vocês fazem manutenção e limpeza periódica?
-            <IoMdArrowDropdown />
+            {isOpen3 ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}
           </h3>
           {isOpen3 && (
             <p>
@@ -154,12 +154,12 @@ export default function Home() {
       </section>
       <section id="construcoes" className="flex flex-col gap-4 h-screen justify-around items-center">
         <h2 className="text-2xl font-medium">Construções</h2>
-        <div className="grid w-[80vw] h-[100vh] grid-cols-3 place-items-center">
-          <button onClick={() => {
+        <div className="grid w-[80vw] h-screen max-[800px]:w-screen grid-cols-3 place-items-center">
+          <button aria-label="back" onClick={() => {
             handleCarrossel('left')
           }}><BsArrowLeftCircleFill size={50} /></button>
-          {carrossel === 0 ? <Image src="/1.webp" alt="construção 1" width={500} height={300} /> : carrossel === 1 ? <Image src="/2.webp" alt="construção 2" width={500} height={300} /> : carrossel === 2 ? <Image src="/3.webp" alt="construção 3" width={500} height={300} /> : <Image src="/4.webp" alt="construção 4" width={500} height={300} />}
-          <button onClick={() => {
+          {carrossel === 0 ? <Image src="/1.webp" alt="construção 1" width={300} height={300} /> : carrossel === 1 ? <Image src="/2.webp" alt="construção 2" width={500} height={300} /> : carrossel === 2 ? <Image src="/3.webp" alt="construção 3" width={500} height={300} /> : <Image src="/4.webp" alt="construção 4" width={500} height={300} />}
+          <button aria-label="next" onClick={() => {
             handleCarrossel('right')
           }}><BsArrowRightCircleFill size={50} /></button>
         </div>
